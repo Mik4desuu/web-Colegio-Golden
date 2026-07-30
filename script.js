@@ -26,6 +26,14 @@ document.querySelector('.next').addEventListener('click', () => { showSlide(curr
 document.querySelector('.prev').addEventListener('click', () => { showSlide(current - 1); resetTimer(); });
 dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); resetTimer(); })); resetTimer();
 
+// Deslizamiento táctil para recorrer las voces sin interferir con el scroll vertical.
+let touchStartX = 0;
+track.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+track.addEventListener('touchend', event => {
+  const distance = event.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(distance) > 40) { showSlide(current + (distance < 0 ? 1 : -1)); resetTimer(); }
+}, { passive: true });
+
 document.querySelector('#info-form').addEventListener('submit', event => {
   event.preventDefault(); const message = document.querySelector('.form-message');
   message.textContent = '¡Gracias! Recibimos tu consulta y te responderemos muy pronto.'; event.target.reset();
