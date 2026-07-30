@@ -1,0 +1,64 @@
+/* Ajustes de contenido institucional; la base visual se conserva en style.css. */
+.levels-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
+.levels-grid .program-card { min-height: 275px; }
+.workshops { background: #fff; }
+.workshop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.workshop-card { border: 1px solid var(--line); padding: 30px 27px; min-height: 185px; transition: .3s; background: #fff; }
+.workshop-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px #123c6a12; border-color: #aac4e5; }
+.workshop-card > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #eaf2ff; color: var(--blue); font: 22px var(--serif); }
+.workshop-card h3 { font-size: 16px; margin: 18px 0 5px; }
+.workshop-card p { font-size: 12px; line-height: 1.6; color: var(--muted); margin: 0; }
+.activity-gallery { background: var(--soft); }
+.activity-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+.activity-strip figure { margin: 0; position: relative; height: 270px; overflow: hidden; }
+.activity-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.activity-strip figure:hover img { transform: scale(1.07); }
+.activity-strip figcaption { position: absolute; inset: auto 0 0; padding: 30px 15px 13px; background: linear-gradient(transparent, #071e41bb); color: #fff; font-size: 12px; font-weight: 700; }
+.benefits { background: #fff; }
+.benefit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.benefit-card { background: var(--soft); padding: 23px; display: flex; align-items: center; gap: 17px; transition: .3s; }
+.benefit-card:hover { background: #eaf2ff; transform: translateY(-4px); }
+.logo-placeholder { width: 48px; height: 48px; border-radius: 50%; border: 1px dashed #8fa8c9; color: var(--blue); display: grid; place-items: center; font: 24px var(--serif); flex: none; }
+.benefit-card h3 { font-size: 13px; margin: 0 0 3px; }
+.benefit-card p { font-size: 11px; color: var(--muted); margin: 0; line-height: 1.5; }
+.whatsapp-contact { margin-top: 8px; }
+.whatsapp-float { position: fixed; right: 23px; bottom: 23px; z-index: 20; background: var(--blue); color: #fff; border-radius: 28px; padding: 12px 17px; display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 11px; font-weight: 800; box-shadow: 0 8px 25px #073a7c4f; transition: .25s; }
+.whatsapp-float:hover { background: var(--blue-dark); transform: translateY(-3px); }
+.whatsapp-float:first-letter { font-size: 19px; }
+.brand-logo { display: block; width: auto; height: 48px; max-width: 200px; object-fit: contain; }
+.footer-brand .brand-logo { height: 44px; }
+.hero-media { background-image: url("images/hero.jpg"); }
+/* Sin imagen: el texto de presentación toma el centro de la sección. */
+.intro-grid { display: block; }
+.intro-content { max-width: 720px; margin: 0 auto; text-align: center; }
+.intro-content .lead, .intro-content .body-copy { max-width: 650px; margin-left: auto; margin-right: auto; }
+.intro-content .text-link { margin-top: 8px; }
+.gallery-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; }
+.gallery-item, .gallery-item.item-large, .gallery-item.item-wide { grid-column: auto; grid-row: auto; aspect-ratio: 16 / 9; border-radius: 10px; }
+.gallery-item figcaption { opacity: 1; }
+.map-embed { height: 300px; background: var(--soft); }
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 650px) {
+  .section { padding: 62px 0; }
+  .hero { min-height: 0; height: 80svh; max-height: 80svh; }
+  .hero h1 { font-size: clamp(44px, 12.8vw, 57px); }
+  .hero-copy { font-size: 14px; margin: 18px 0 22px; line-height: 1.6; }
+  .hero-actions { gap: 8px; }
+  .btn { min-height: 47px; padding: 12px 17px; font-size: 11px; }
+  .site-header, .navbar { height: 66px; }
+  .nav-menu { inset: 66px 0 auto; }
+  .levels-grid, .workshop-grid, .benefit-grid { grid-template-columns: 1fr; }
+  .levels-grid { max-width: none; }
+  .levels-grid .program-card { min-height: 210px; }
+  .workshop-card { min-height: 0; padding: 23px; }
+  .gallery-grid, .activity-strip { display: flex; overflow-x: auto; grid-template-columns: none; gap: 12px; padding: 2px 0 10px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .gallery-grid::-webkit-scrollbar, .activity-strip::-webkit-scrollbar { display: none; }
+  .gallery-item, .gallery-item.item-large, .gallery-item.item-wide, .activity-strip figure { flex: 0 0 83%; height: auto; aspect-ratio: 16 / 9; scroll-snap-align: start; border-radius: 10px; }
+  .gallery-item img, .activity-strip img { object-fit: cover; }
+  .whatsapp-float { right: 16px; bottom: 16px; width: 49px; height: 49px; padding: 0; border-radius: 50%; justify-content: center; }
+  .whatsapp-float span { display: none; }
+  .contact-form { padding: 25px 21px; }
+  input, textarea { font-size: 16px; padding: 10px 0; }
+  .map-embed { height: 230px; }
+  .brand-logo { height: 42px; max-width: 170px; }
+}
