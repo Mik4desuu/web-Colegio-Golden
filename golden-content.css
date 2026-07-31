@@ -1,19 +1,19 @@
 /* Ajustes de contenido institucional; la base visual se conserva en style.css. */
 /* Identidad tipográfica: Nunito aporta una lectura cercana, clara y contemporánea. */
 :root { --serif: "Nunito", Arial, sans-serif; --sans: "Nunito", Arial, sans-serif; }
-body { font-family: var(--sans); font-weight: 400; }
+body { font-family: var(--sans); font-size: 17px; font-weight: 400; line-height: 1.75; }
 /* Bienvenida breve: partículas livianas en CSS y revelado gradual del logo. */
 .site-intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #fff; opacity: 1; transition: opacity .65s ease, visibility .65s ease; }
 .site-intro.is-exiting { opacity: 0; visibility: hidden; }
-.site-intro__content { position: relative; display: grid; place-items: center; min-height: 310px; width: min(88vw, 410px); }
+.site-intro__content { position: relative; display: grid; place-items: center; min-height: 390px; width: min(88vw, 500px); }
 .intro-particles { position: absolute; inset: 0; display: grid; place-items: center; }
 .intro-particles span { position: absolute; width: 12px; height: 12px; border-radius: 3px; background: var(--blue); transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; animation: gather-piece 2.1s cubic-bezier(.2,.8,.2,1) forwards; }
 .intro-particles span:nth-child(2n) { width: 8px; height: 8px; border-radius: 50%; background: #4b82c4; animation-delay: .08s; }
 .intro-particles span:nth-child(3n) { width: 15px; height: 5px; border-radius: 5px; background: #0b5db8; animation-delay: .16s; }
-.intro-logo-reveal { position: relative; z-index: 1; width: 128px; height: 128px; display: grid; place-items: center; opacity: 0; transform: scale(.84); animation: reveal-logo 1.3s cubic-bezier(.2,.8,.2,1) .85s forwards; }
+.intro-logo-reveal { position: relative; z-index: 1; width: 180px; height: 180px; display: grid; place-items: center; opacity: 0; transform: scale(.84); animation: reveal-logo 1.3s cubic-bezier(.2,.8,.2,1) .85s forwards; }
 .intro-logo-reveal::before { content: ""; position: absolute; inset: -15px; border: 1px solid #d9e7f7; border-radius: 50%; opacity: 0; animation: logo-ring 1.1s ease 1.55s forwards; }
 .intro-logo-reveal img { width: 100%; height: 100%; padding: 7px; object-fit: contain; border-radius: 50%; background: #fff; box-shadow: 0 14px 36px #0a4da21c; clip-path: inset(0 50% 0 50% round 50%); animation: unveil-logo 1.1s ease .95s forwards; }
-.site-intro__content p { position: absolute; top: calc(50% + 105px); margin: 0; color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .3px; text-align: center; opacity: 0; transform: translateY(9px); animation: intro-words .7s ease 2.35s forwards; }
+.site-intro__content p { position: absolute; top: calc(50% + 145px); margin: 0; color: var(--blue); font-size: 18px; font-weight: 700; letter-spacing: .4px; line-height: 1.5; text-align: center; opacity: 0; transform: translateY(9px); animation: intro-words .7s ease 2.35s forwards; }
 @keyframes gather-piece { 0% { opacity: 0; } 15% { opacity: .85; } 80% { opacity: .65; } 100% { opacity: 0; transform: translate(0, 0) rotate(0); } }
 @keyframes reveal-logo { to { opacity: 1; transform: scale(1); } }
 @keyframes unveil-logo { to { clip-path: inset(0 0 0 0 round 50%); } }
@@ -23,7 +23,19 @@ h1, h2, .hero h1, .intro h2, .section-heading h2, .contact h2, .testimonials h2 
 h3, .eyebrow, .text-link, .btn { font-family: var(--sans); }
 h3, .eyebrow, .text-link { font-weight: 700; }
 em { font-style: normal; font-weight: 800; }
-.lead { font-weight: 500; }
+.lead { font-size: 19px; font-weight: 500; line-height: 1.75; }
+.body-copy, .heading-copy { font-size: 17px; line-height: 1.75; }
+.section { padding: 100px 0; }
+.section-heading h2, .intro h2, .contact h2, .testimonials h2 { font-size: clamp(44px, 5.2vw, 68px); line-height: 1.08; }
+.hero h1 { font-size: clamp(60px, 7.4vw, 94px); }
+/* Encabezados institucionales en el azul principal para reforzar la jerarquía. */
+#nosotros h2, #propuesta h2, #talleres h2, #espacios h2, #novedades h2, .benefits h2, #contacto h2 { color: var(--blue); }
+.program-card p, .workshop-card p { font-size: 16px; line-height: 1.7; }
+.benefit-card h3, .news-content p, .news-content a, .contact-details a { font-size: 14px; }
+.program-card h3, .workshop-card h3, .news-content h3 { font-size: 18px; }
+label { font-size: 14px; }
+input, select, textarea { font-size: 17px; padding: 11px 0; }
+.nav-menu > a:not(.nav-cta), .nav-cta { font-size: 13px; }
 .levels-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
 .levels-grid .program-card { min-height: 275px; }
 .workshops { background: #fff; }
@@ -47,10 +59,13 @@ em { font-style: normal; font-weight: 800; }
 .benefit-card h3 { font-size: 11px; line-height: 1.3; margin: 0; font-weight: 700; }
 .testimonial { background: #ffffff0d; border: 1px solid #ffffff1e; border-radius: 12px; padding: 30px 32px; }
 .testimonial .quote { font-weight: 800; }
-.whatsapp-section .contact-grid { align-items: start; }
-.whatsapp-section .contact-details { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 25px; }
-.whatsapp-section .contact-form { padding: 31px 36px; }
-.btn-whatsapp { width: 100%; color: #fff; background: #25d366; margin-top: 7px; min-height: 50px; }
+.whatsapp-content { max-width: 800px; }
+.whatsapp-heading { max-width: 760px; }
+.whatsapp-section .contact-form { max-width: 760px; padding: 32px 38px; margin: 30px 0 25px; }
+.whatsapp-section .contact-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; row-gap: 18px; margin-top: 0; }
+.whatsapp-section .contact-details .contact-address { grid-column: 1 / -1; }
+.optional { color: var(--muted); font-weight: 400; }
+.btn-whatsapp { width: 100%; color: #fff; background: #25d366; margin-top: 7px; min-height: 56px; font-size: 14px; }
 .btn-whatsapp:hover { background: #1db957; transform: translateY(-2px); box-shadow: 0 8px 18px #25d36642; }
 .whatsapp-float { position: fixed; right: 23px; bottom: 23px; z-index: 20; width: 54px; height: 54px; padding: 0; display: grid; place-items: center; background: #25d366; color: #fff; border-radius: 50%; text-decoration: none; font: 27px/1 var(--sans); font-weight: 800; box-shadow: 0 8px 25px #0b7d3d50; transition: transform .25s, background .25s; animation: whatsapp-pulse 2.6s ease-in-out infinite; }
 .whatsapp-float:hover { background: #1db957; transform: translateY(-4px) scale(1.04); }
@@ -73,15 +88,19 @@ em { font-style: normal; font-weight: 800; }
 @media (min-width: 651px) and (max-width: 900px) { .benefit-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .site-intro { display: none; } }
 @media (max-width: 650px) {
-  .site-intro__content { min-height: 270px; }
-  .intro-logo-reveal { width: 110px; height: 110px; }
-  .site-intro__content p { top: calc(50% + 90px); font-size: 11px; }
-  .section { padding: 62px 0; }
+  body { font-size: 16px; line-height: 1.7; }
+  .site-intro__content { min-height: 340px; }
+  .intro-logo-reveal { width: 155px; height: 155px; }
+  .site-intro__content p { top: calc(50% + 128px); width: min(90vw, 360px); font-size: 16px; }
+  .section { padding: 54px 0; }
   .hero { min-height: 0; height: 80svh; max-height: 80svh; }
   .hero h1 { font-size: clamp(44px, 12.8vw, 57px); }
-  .hero-copy { font-size: 14px; margin: 18px 0 22px; line-height: 1.6; }
+  .hero-copy { font-size: 16px; margin: 18px 0 22px; line-height: 1.65; }
   .hero-actions { gap: 8px; }
-  .btn { min-height: 47px; padding: 12px 17px; font-size: 11px; }
+  .btn { min-height: 54px; padding: 13px 19px; font-size: 14px; }
+  .section-heading h2, .intro h2, .contact h2, .testimonials h2 { font-size: clamp(36px, 10vw, 44px); }
+  .lead, .body-copy, .heading-copy { font-size: 16px; }
+  .program-card p, .workshop-card p { font-size: 16px; }
   .site-header, .navbar { height: 66px; }
   .nav-menu { inset: 66px 0 auto; }
   .levels-grid, .workshop-grid { grid-template-columns: 1fr; }
@@ -99,9 +118,10 @@ em { font-style: normal; font-weight: 800; }
   .whatsapp-float { right: 16px; bottom: 16px; width: 50px; height: 50px; }
   .whatsapp-float span { display: none; }
   .contact-form { padding: 25px 21px; }
-  .whatsapp-section .contact-details { grid-template-columns: 1fr; gap: 15px; margin-top: 28px; }
+  .whatsapp-section .contact-details { grid-template-columns: 1fr; gap: 15px; margin-top: 0; }
   .whatsapp-section .contact-form { padding: 25px 21px; }
-  input, textarea { font-size: 16px; padding: 10px 0; }
+  input, select, textarea { font-size: 17px; padding: 12px 0; }
+  label { font-size: 15px; }
   .map-embed { height: 230px; }
   .brand-logo { width: 42px; height: 42px; }
   .testimonial { padding: 24px 22px; }
