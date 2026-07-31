@@ -3,6 +3,13 @@ const header = document.querySelector('.site-header');
 const toggle = document.querySelector('.nav-toggle');
 const menu = document.querySelector('.nav-menu');
 
+// La intro se superpone mientras carga la página y se retira sola sin bloquearla.
+const siteIntro = document.querySelector('.site-intro');
+if (siteIntro && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  window.setTimeout(() => siteIntro.classList.add('is-exiting'), 4150);
+  window.setTimeout(() => siteIntro.remove(), 4850);
+}
+
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
 toggle.addEventListener('click', () => {
   const open = menu.classList.toggle('open');
