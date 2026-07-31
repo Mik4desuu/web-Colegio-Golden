@@ -27,7 +27,17 @@ em { font-style: normal; font-weight: 800; }
 .body-copy, .heading-copy { font-size: 17px; line-height: 1.75; }
 .section { padding: 100px 0; }
 .section-heading h2, .intro h2, .contact h2, .testimonials h2 { font-size: clamp(44px, 5.2vw, 68px); line-height: 1.08; }
-.hero h1 { font-size: clamp(60px, 7.4vw, 94px); }
+.hero h1 { font-size: clamp(54px, 6.7vw, 85px); line-height: 1.08; }
+.hero .hero-actions { margin-top: 24px; }
+.hero-enroll { --liquid-speed: 7s; --shine-speed: 10s; position: relative; isolation: isolate; min-height: 62px; overflow: hidden; padding: 16px 31px; color: #fff; background: #ffffff2e; border: 1px solid #ffffff8c; border-radius: 999px; box-shadow: 0 8px 22px #001d453d; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: 16px; font-weight: 700; transition: transform .3s ease, box-shadow .3s ease, background .3s ease, border-color .3s ease; }
+.hero-enroll__label { position: relative; z-index: 2; }
+.liquid-wave { position: absolute; z-index: 1; top: -65%; left: -64%; width: 74%; height: 225%; border-radius: 46% 54% 52% 48%; background: linear-gradient(115deg, transparent 20%, #0a4da24a 46%, #4991dd36 62%, transparent 80%); transform: rotate(12deg); animation: liquid-drift var(--liquid-speed) ease-in-out infinite; transition: opacity .3s ease; }
+.liquid-shine { position: absolute; z-index: 1; inset: 0; background: linear-gradient(104deg, transparent 38%, #b9dcff32 49%, transparent 60%); transform: translateX(-130%); animation: liquid-shine var(--shine-speed) ease-in-out infinite; transition: opacity .3s ease; }
+.hero-enroll:hover { color: #fff; background: var(--blue); border-color: transparent; transform: translateY(-3px); box-shadow: 0 14px 28px #001d4575; }
+.hero-enroll:hover .liquid-wave, .hero-enroll:hover .liquid-shine { opacity: 0; }
+.hero-enroll:active { transform: translateY(-1px) scale(.98); box-shadow: 0 7px 16px #001d4557; }
+@keyframes liquid-drift { 0%, 100% { transform: translateX(0) rotate(12deg); } 50% { transform: translateX(250%) rotate(-7deg); } }
+@keyframes liquid-shine { 0%, 62%, 100% { transform: translateX(-130%); } 80% { transform: translateX(130%); } }
 /* Encabezados institucionales en el azul principal para reforzar la jerarquía. */
 #nosotros h2, #propuesta h2, #talleres h2, #espacios h2, #novedades h2, .benefits h2, #contacto h2 { color: var(--blue); }
 .program-card p, .workshop-card p { font-size: 16px; line-height: 1.7; }
@@ -94,9 +104,11 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
   .site-intro__content p { top: calc(50% + 165px); width: min(90vw, 390px); font-size: 19px; }
   .section { padding: 54px 0; }
   .hero { min-height: 0; height: 80svh; max-height: 80svh; }
-  .hero h1 { font-size: clamp(44px, 12.8vw, 57px); }
+  .hero h1 { font-size: clamp(40px, 11.6vw, 51px); line-height: 1.1; }
   .hero-copy { font-size: 16px; margin: 18px 0 22px; line-height: 1.65; }
   .hero-actions { gap: 8px; }
+  .hero .hero-actions { margin-top: 22px; }
+  .hero-enroll { width: min(100%, 345px); min-height: 56px; font-size: 15px; }
   .btn { min-height: 54px; padding: 13px 19px; font-size: 14px; }
   .section-heading h2, .intro h2, .contact h2, .testimonials h2 { font-size: clamp(36px, 10vw, 44px); }
   .lead, .body-copy, .heading-copy { font-size: 16px; }
