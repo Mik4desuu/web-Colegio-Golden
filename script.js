@@ -42,6 +42,15 @@ track.addEventListener('touchend', event => {
 }, { passive: true });
 
 document.querySelector('#info-form').addEventListener('submit', event => {
-  event.preventDefault(); const message = document.querySelector('.form-message');
-  message.textContent = '¡Gracias! Recibimos tu consulta y te responderemos muy pronto.'; event.target.reset();
+  event.preventDefault();
+  const form = new FormData(event.target);
+  const message = [
+    'Hola, quisiera consultar por Colegio Golden.',
+    '',
+    `Nombre de la familia: ${form.get('familia')}`,
+    `Nombre del niño/a: ${form.get('nino')}`,
+    `Nivel de interés: ${form.get('nivel')}`,
+    `Consulta: ${form.get('consulta')}`
+  ].join('\n');
+  window.open(`https://wa.me/59894167320?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
 });
