@@ -23,6 +23,18 @@ document.querySelectorAll('.flip-card').forEach(card => {
   });
 });
 
+// Cada novedad se abre y cierra dentro de su propia tarjeta.
+document.querySelectorAll('.news-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const card = toggle.closest('.news-card');
+    const extra = card.querySelector('.news-extra');
+    const isOpen = card.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.innerHTML = isOpen ? 'Cerrar <span>→</span>' : 'Conocer la experiencia <span>→</span>';
+    extra.setAttribute('aria-hidden', !isOpen);
+  });
+});
+
 // La intro se superpone mientras carga la página y se retira sola sin bloquearla.
 const siteIntro = document.querySelector('.site-intro');
 if (siteIntro && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

@@ -43,6 +43,14 @@ em { font-style: normal; font-weight: 800; }
 .program-card p, .workshop-card p { font-size: 16px; line-height: 1.7; }
 .benefit-card h3, .news-content p, .news-content a, .contact-details a { font-size: 14px; }
 .program-card h3, .workshop-card h3, .news-content h3 { font-size: 18px; }
+.news-content h3 { color: var(--ink); }
+.news-extra { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .45s ease, opacity .3s ease, margin .45s ease; }
+.news-extra p { max-width: 62ch; margin: 0 0 14px; color: #444; font-size: 14px; font-weight: 400; line-height: 1.7; }
+.news-extra p:last-child { margin: 4px 0 0; color: var(--blue); font-weight: 600; }
+.news-card.is-open .news-extra { max-height: 430px; margin: 0 0 17px; opacity: 1; }
+.news-toggle { display: inline-flex; align-items: center; gap: 7px; padding: 0; border: 0; background: transparent; color: var(--blue); font: 800 11px var(--sans); cursor: pointer; }
+.news-toggle span { font-size: 17px; transition: transform .25s ease; }
+.news-card.is-open .news-toggle span { transform: rotate(90deg); }
 label { font-size: 14px; }
 input, select, textarea { font-size: 17px; padding: 11px 0; }
 .nav-menu > a:not(.nav-cta), .nav-cta { font-size: 13px; }
@@ -140,6 +148,7 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
   .section-heading h2, .intro h2, .contact h2, .testimonials h2 { font-size: clamp(36px, 10vw, 44px); }
   .lead, .body-copy, .heading-copy { font-size: 16px; }
   .program-card p, .workshop-card p { font-size: 16px; }
+  .news-extra p { font-size: 15px; }
   .site-header, .navbar { height: 66px; }
   .nav-menu { inset: 66px 0 auto; }
   .levels-grid, .workshop-grid { grid-template-columns: 1fr; }
