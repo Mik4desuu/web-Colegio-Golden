@@ -48,6 +48,28 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .nav-menu > a:not(.nav-cta), .nav-cta { font-size: 13px; }
 .levels-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
 .levels-grid .program-card { min-height: 275px; }
+.flip-card { min-height: 300px !important; padding: 0 !important; background: transparent !important; perspective: 1000px; overflow: visible; }
+.flip-card__inner { position: relative; width: 100%; height: 100%; min-height: 300px; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.75,.25,1); cursor: pointer; outline: none; }
+.flip-card__inner:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.flip-card__face { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 25px 22px; overflow: hidden; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.flip-card__front { background: #fff; color: var(--ink); }
+.flip-card.accent .flip-card__front { background: var(--blue); color: #fff; }
+.flip-card__front .program-index { margin: 22px 0 auto; }
+.flip-card__front h3 { margin: 0 0 7px; }
+.flip-card__front p { margin: 0; }
+.flip-card__back { align-items: flex-start; justify-content: center; color: #fff; background: var(--blue); transform: rotateY(180deg); }
+.flip-card:not(.accent) .flip-card__back { color: var(--ink); background: #fff; }
+.flip-card:not(.accent) .flip-card__back .program-index, .flip-card:not(.accent) .flip-card__back .flip-card__hint { color: var(--blue); }
+.flip-card:not(.accent) .flip-card__back li::before { color: var(--blue); }
+.flip-card__back .program-index { color: #b9d5ff; font-size: 14px; margin-bottom: 10px; }
+.flip-card__back h3 { margin: 0 0 12px; font-size: 18px; }
+.flip-card__back ul { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 16px; padding: 0; margin: 0; list-style: none; font-size: 13px; line-height: 1.45; }
+.flip-card__back li::before { content: "•"; color: #b9d5ff; margin-right: 6px; }
+.flip-card__hint { margin-top: auto; padding-top: 15px; color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: .15px; }
+.flip-card.accent .flip-card__hint { color: #d6e6fb; }
+.flip-card__back .flip-card__hint { color: #d6e6fb; }
+@media (hover: hover) and (pointer: fine) { .flip-card:hover .flip-card__inner { transform: rotateY(180deg); } }
+.flip-card.is-flipped .flip-card__inner { transform: rotateY(180deg); }
 .workshops { background: #fff; }
 .workshop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .workshop-card { border: 1px solid var(--line); padding: 30px 27px; min-height: 185px; transition: .3s; background: #fff; }
@@ -122,6 +144,9 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
   .benefit-card img { width: 62px; height: 62px; }
   .levels-grid { max-width: none; }
   .levels-grid .program-card { min-height: 210px; }
+  .flip-card, .flip-card__inner { min-height: 250px !important; }
+  .flip-card__face { padding: 21px 18px; }
+  .flip-card__back ul { font-size: 12px; gap: 4px 12px; }
   .workshop-card { min-height: 0; padding: 23px; }
   .gallery-grid, .activity-strip { display: flex; overflow-x: auto; overflow-y: hidden; grid-template-columns: none; gap: 12px; padding: 2px 0 10px; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .gallery-grid::-webkit-scrollbar, .activity-strip::-webkit-scrollbar { display: none; }

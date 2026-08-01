@@ -9,6 +9,20 @@ heroEnroll?.addEventListener('click', event => {
   document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
+// En pantallas táctiles, las Flip Cards alternan de cara con cada toque.
+const isTouchPrimary = () => window.matchMedia('(hover: none), (pointer: coarse)').matches;
+document.querySelectorAll('.flip-card').forEach(card => {
+  const inner = card.querySelector('.flip-card__inner');
+  const toggleCard = () => {
+    card.classList.toggle('is-flipped');
+    inner.setAttribute('aria-pressed', card.classList.contains('is-flipped'));
+  };
+  inner.addEventListener('click', () => { if (isTouchPrimary()) toggleCard(); });
+  inner.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleCard(); }
+  });
+});
+
 // La intro se superpone mientras carga la página y se retira sola sin bloquearla.
 const siteIntro = document.querySelector('.site-intro');
 if (siteIntro && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
