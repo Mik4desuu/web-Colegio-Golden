@@ -74,6 +74,11 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .workshop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .workshop-card { border: 1px solid var(--line); padding: 30px 27px; min-height: 185px; transition: .3s; background: #fff; }
 .workshop-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px #123c6a12; border-color: #aac4e5; }
+.workshop-card { animation: workshop-breathe 5.6s ease-in-out infinite; }
+.workshop-card:nth-child(2) { animation-delay: 1.5s; }
+.workshop-card:nth-child(3) { animation-delay: 3s; }
+.workshop-card:hover { animation: none; }
+@keyframes workshop-breathe { 0%, 100% { transform: translateY(0); box-shadow: 0 0 0 #123c6a00; } 50% { transform: translateY(-3px); box-shadow: 0 10px 22px #123c6a12; } }
 .workshop-card > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #eaf2ff; color: var(--blue); font: 22px var(--serif); }
 .workshop-card h3 { font-size: 16px; margin: 18px 0 5px; }
 .workshop-card p { font-size: 12px; line-height: 1.6; color: var(--muted); margin: 0; }
@@ -118,7 +123,7 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .map-embed { height: 300px; background: var(--soft); }
 .map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 @media (min-width: 651px) and (max-width: 900px) { .benefit-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (prefers-reduced-motion: reduce) { .site-intro { display: none; } }
+@media (prefers-reduced-motion: reduce) { .site-intro { display: none; } .workshop-card { animation: none; } }
 @media (max-width: 650px) {
   body { font-size: 16px; line-height: 1.7; }
   .site-intro__content { min-height: 420px; }
@@ -151,6 +156,7 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
   .gallery-grid, .activity-strip { display: flex; overflow-x: auto; overflow-y: hidden; grid-template-columns: none; gap: 12px; padding: 2px 0 10px; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .gallery-grid::-webkit-scrollbar, .activity-strip::-webkit-scrollbar { display: none; }
   .gallery-item, .gallery-item.item-large, .gallery-item.item-wide, .activity-strip figure { flex: 0 0 78%; height: auto; aspect-ratio: 16 / 9; scroll-snap-align: start; border-radius: 10px; }
+  #espacios .gallery-item:nth-child(6) { display: block; }
   .gallery-item img, .activity-strip img { object-fit: cover; }
   .whatsapp-float { right: 16px; bottom: 16px; width: 50px; height: 50px; }
   .whatsapp-float span { display: none; }
