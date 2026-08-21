@@ -119,14 +119,35 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .benefit-card h3 { font-size: 11px; line-height: 1.3; margin: 0; font-weight: 700; }
 .testimonial { background: #ffffff0d; border: 1px solid #ffffff1e; border-radius: 12px; padding: 30px 32px; }
 .testimonial .quote { font-weight: 800; }
-.whatsapp-content { max-width: 800px; }
-.whatsapp-heading { max-width: 760px; }
-.whatsapp-section .contact-form { max-width: 760px; padding: 32px 38px; margin: 30px 0 25px; }
-.whatsapp-section .contact-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; row-gap: 18px; margin-top: 0; }
-.whatsapp-section .contact-details .contact-address { grid-column: 1 / -1; }
-.optional { color: var(--muted); font-weight: 400; }
-.btn-whatsapp { width: 100%; color: #fff; background: #25d366; margin-top: 7px; min-height: 56px; font-size: 14px; }
-.btn-whatsapp:hover { background: #1db957; transform: translateY(-2px); box-shadow: 0 8px 18px #25d36642; }
+.whatsapp-content { max-width: 1080px; }
+.whatsapp-heading { max-width: 760px; margin-bottom: 34px; }
+.golden-contact-layout { display: grid; grid-template-columns: minmax(0, 500px) minmax(260px, 1fr); gap: clamp(34px, 7vw, 90px); align-items: start; }
+.whatsapp-section .golden-contact-form { max-width: 500px; margin: 0; padding: 30px; background: #fff; border: 1px solid #d8e8f2; border-radius: 20px; box-shadow: 0 10px 28px #0a4da212; }
+.golden-contact-form__fields { display: grid; gap: 17px; }
+.golden-contact-title { position: relative; margin: 0 0 5px; padding-left: 20px; color: var(--blue); font-size: 21px; font-weight: 800; line-height: 1.35; }
+.golden-contact-title::before, .golden-contact-title::after { content: ""; position: absolute; border-radius: 50%; }
+.golden-contact-title::before { top: 50%; left: 0; width: 9px; height: 9px; background: var(--blue); transform: translateY(-50%); }
+.golden-contact-title::after { top: 50%; left: -4px; width: 17px; height: 17px; border: 1px solid #7fbbe0; transform: translateY(-50%) scale(.8); animation: golden-contact-pulse 2.6s ease-out infinite; }
+@keyframes golden-contact-pulse { 0%, 30% { opacity: .65; transform: translateY(-50%) scale(.8); } 75%, 100% { opacity: 0; transform: translateY(-50%) scale(1.55); } }
+.golden-contact-fields-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.golden-contact-field { position: relative; min-width: 0; }
+.golden-contact-field input, .golden-contact-field select, .golden-contact-field textarea { width: 100%; min-height: 58px; margin: 0; padding: 23px 14px 8px; border: 1px solid #ccdde9; border-radius: 12px; background: #fff; color: var(--ink); font: 500 15px/1.35 var(--sans); transition: border-color .22s ease, box-shadow .22s ease; }
+.golden-contact-field textarea { min-height: 116px; padding-top: 25px; resize: vertical; }
+.golden-contact-field input:focus, .golden-contact-field select:focus, .golden-contact-field textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px #0a4da214; }
+.golden-contact-field > label { position: absolute; z-index: 1; top: 18px; left: 15px; margin: 0; padding: 0 3px; color: #607087; background: #fff; font-size: 14px; font-weight: 600; line-height: 1.25; pointer-events: none; transform-origin: left top; transition: transform .2s ease, color .2s ease, top .2s ease; }
+.golden-contact-field > label span { color: var(--muted); font-weight: 400; }
+.golden-contact-field input:focus + label, .golden-contact-field input:not(:placeholder-shown) + label, .golden-contact-field textarea:focus + label, .golden-contact-field textarea:not(:placeholder-shown) + label { top: -8px; color: var(--blue); transform: scale(.82); }
+.golden-contact-field--select > label { top: -8px; color: var(--blue); transform: scale(.82); }
+.golden-contact-field select { padding-top: 19px; cursor: pointer; }
+.golden-contact-field select:valid { border-color: #a9cde3; }
+.golden-contact-submit { width: 100%; min-height: 54px; margin: 2px 0 0; border-radius: 11px; background: var(--blue); color: #fff; font-size: 15px; }
+.golden-contact-submit:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 17px #0a4da233; }
+.golden-contact-submit:focus-visible { outline: 3px solid #bfe3f5; outline-offset: 3px; }
+.golden-contact-form .form-message { margin: -5px 0 0; }
+.whatsapp-section .golden-contact-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px 20px; margin: 0; padding: 17px 0; }
+.golden-contact-details a { padding: 0 0 13px; border-bottom: 1px solid #dce9f1; transition: color .2s ease, border-color .2s ease; }
+.golden-contact-details a:hover { color: var(--blue); border-color: #9ccbe6; }
+.whatsapp-section .golden-contact-details .contact-address { grid-column: 1 / -1; }
 .whatsapp-float { position: fixed; right: 23px; bottom: 23px; z-index: 20; width: 54px; height: 54px; padding: 0; display: grid; place-items: center; background: #25d366; color: #fff; border-radius: 50%; text-decoration: none; font: 27px/1 var(--sans); font-weight: 800; box-shadow: 0 8px 25px #0b7d3d50; transition: transform .25s, background .25s; animation: whatsapp-pulse 2.6s ease-in-out infinite; }
 .whatsapp-float:hover { background: #1db957; transform: translateY(-4px) scale(1.04); }
 .whatsapp-float span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -182,11 +203,12 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
   .gallery-item img, .activity-strip img { object-fit: cover; }
   .whatsapp-float { right: 16px; bottom: 16px; width: 50px; height: 50px; }
   .whatsapp-float span { display: none; }
-  .contact-form { padding: 25px 21px; }
-  .whatsapp-section .contact-details { grid-template-columns: 1fr; gap: 15px; margin-top: 0; }
-  .whatsapp-section .contact-form { padding: 25px 21px; }
-  input, select, textarea { font-size: 17px; padding: 12px 0; }
-  label { font-size: 15px; }
+  .golden-contact-layout { grid-template-columns: 1fr; gap: 26px; }
+  .whatsapp-section .golden-contact-form { max-width: none; padding: 24px 20px; }
+  .golden-contact-fields-row, .whatsapp-section .golden-contact-details { grid-template-columns: 1fr; }
+  .whatsapp-section .golden-contact-details { gap: 14px; padding: 0; }
+  .golden-contact-details a { padding-bottom: 12px; }
+  .golden-contact-field input, .golden-contact-field select, .golden-contact-field textarea { font-size: 16px; }
   .map-embed { height: 230px; }
   .brand-logo { width: 42px; height: 42px; }
   .testimonial { padding: 24px 22px; }
