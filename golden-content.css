@@ -22,14 +22,14 @@ main, footer { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { .golden-sky__cloud { animation: none; } }
 @media (max-width: 650px) { .golden-sky__cloud--2, .golden-sky__cloud--4, .golden-sky__cloud--7 { display: none; } }
 /* Bienvenida breve: logo real y un trazo SVG inspirado en un loader de línea dibujada. */
-.site-intro { --intro-ring-blue: #0B55A5; --intro-ring-light: #BFE3F5; position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #fff; opacity: 1; transition: opacity .55s ease, visibility .55s ease; }
+.site-intro { --intro-ring-blue: #0B55A5; --intro-ring-light: #BFE3F5; position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #fff; opacity: 1; transition: opacity .4s ease, visibility .4s ease; }
 .site-intro.is-exiting { opacity: 0; visibility: hidden; }
 .site-intro__content { position: relative; display: grid; place-items: center; width: min(90vw, 360px); }
-.intro-logo-reveal { position: relative; display: grid; width: clamp(120px, 12vw, 155px); aspect-ratio: 1; place-items: center; opacity: 0; transform: scale(.85); filter: blur(7px); animation: intro-logo-appear .62s cubic-bezier(.22,.8,.26,1) .08s forwards, intro-logo-depart .42s ease 2.45s forwards; }
+.intro-logo-reveal { position: relative; display: grid; width: clamp(120px, 12vw, 155px); aspect-ratio: 1; place-items: center; opacity: 0; transform: scale(.85); filter: blur(7px); animation: intro-logo-appear .45s cubic-bezier(.22,.8,.26,1) .05s forwards, intro-logo-depart .32s ease 1.2s forwards; }
 .intro-logo-reveal img { position: relative; z-index: 1; width: 100%; height: 100%; padding: 5px; object-fit: contain; border-radius: 50%; background: #fff; }
-.intro-loader-ring { position: absolute; inset: -22%; width: 144%; height: 144%; overflow: visible; transform-box: fill-box; transform-origin: center; animation: intro-ring-turn 2.35s ease-in-out .35s forwards; }
+.intro-loader-ring { position: absolute; inset: -22%; width: 144%; height: 144%; overflow: visible; transform-box: fill-box; transform-origin: center; animation: intro-ring-turn 1.25s ease-in-out .2s forwards; }
 .intro-loader-ring__track { fill: none; stroke: var(--intro-ring-light); stroke-width: 1.2; opacity: .42; }
-.intro-loader-ring__trace { fill: none; stroke: url(#golden-intro-ring); stroke-width: 2.1; stroke-linecap: round; stroke-dasharray: 72 28; stroke-dashoffset: 100; opacity: 0; animation: intro-ring-trace 2.35s cubic-bezier(.36,.01,.25,1) .28s forwards; }
+.intro-loader-ring__trace { fill: none; stroke: url(#golden-intro-ring); stroke-width: 2.1; stroke-linecap: round; stroke-dasharray: 72 28; stroke-dashoffset: 100; opacity: 0; animation: intro-ring-trace 1.25s cubic-bezier(.36,.01,.25,1) .16s forwards; }
 @keyframes intro-logo-appear { to { opacity: 1; transform: scale(1); filter: blur(0); } }
 @keyframes intro-logo-depart { to { opacity: 0; transform: scale(1.03); filter: blur(1px); } }
 @keyframes intro-ring-turn { 0% { transform: rotate(-8deg) scale(.92); opacity: 0; } 22% { opacity: 1; } 78% { opacity: 1; } 100% { transform: rotate(12deg) scale(1.02); opacity: 0; } }
@@ -155,7 +155,9 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .whatsapp-float:first-letter { font-size: 19px; }
 .brand-logo { display: block; width: 48px; height: 48px; padding: 4px; border-radius: 50%; background: #fff; object-fit: contain; }
 .footer-brand .brand-logo { width: 44px; height: 44px; }
-.hero-media { background-image: url("images/hero.jpg"); }
+.hero-media { background-image: none; }
+.hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-context { margin: 0 0 13px; color: #e7f5ff; font-size: clamp(13px, 1.4vw, 16px); font-weight: 700; letter-spacing: .02em; line-height: 1.4; }
 /* Sin imagen: el texto de presentación toma el centro de la sección. */
 .intro-grid { display: block; }
 .intro-content { max-width: 720px; margin: 0 auto; text-align: center; }

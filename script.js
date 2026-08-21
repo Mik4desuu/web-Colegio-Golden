@@ -39,8 +39,8 @@ document.querySelectorAll('.news-toggle').forEach(toggle => {
 const siteIntro = document.querySelector('.site-intro');
 if (siteIntro) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const introExitDelay = reducedMotion ? 700 : 2650;
-  const introRemoveDelay = reducedMotion ? 1250 : 3200;
+  const introExitDelay = reducedMotion ? 500 : 1300;
+  const introRemoveDelay = reducedMotion ? 900 : 1750;
   window.setTimeout(() => siteIntro.classList.add('is-exiting'), introExitDelay);
   window.setTimeout(() => siteIntro.remove(), introRemoveDelay);
 }
