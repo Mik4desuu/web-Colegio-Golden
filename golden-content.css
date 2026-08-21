@@ -2,6 +2,25 @@
 /* Identidad tipográfica: Nunito aporta una lectura cercana, clara y contemporánea. */
 :root { --serif: "Nunito", Arial, sans-serif; --sans: "Nunito", Arial, sans-serif; }
 body { font-family: var(--sans); font-size: 17px; font-weight: 400; line-height: 1.75; }
+/* Fondo decorativo: pocas nubes celestes suaves, hechas solo con CSS. */
+body { overflow-x: clip; }
+.golden-sky { --golden-cloud-color: #BFE3F5; position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: #fff; }
+.golden-sky__cloud { position: absolute; width: min(var(--cloud-size), 34vw); aspect-ratio: 2.25 / 1; border-radius: 999px; background: var(--golden-cloud-color); opacity: var(--cloud-opacity); filter: blur(.35px); animation: golden-cloud-drift var(--cloud-speed) ease-in-out infinite alternate; will-change: transform; }
+.golden-sky__cloud::before, .golden-sky__cloud::after { content: ""; position: absolute; bottom: 31%; border-radius: 50%; background: inherit; }
+.golden-sky__cloud::before { left: 14%; width: 52%; aspect-ratio: 1; }
+.golden-sky__cloud::after { right: 12%; width: 46%; aspect-ratio: 1; }
+.golden-sky__cloud--1 { --cloud-size: 150px; --cloud-opacity: .31; --cloud-speed: 58s; --cloud-drift-x: 46px; --cloud-drift-y: 8px; top: 7%; left: -2%; }
+.golden-sky__cloud--2 { --cloud-size: 65px; --cloud-opacity: .38; --cloud-speed: 39s; --cloud-drift-x: -34px; --cloud-drift-y: 10px; top: 17%; right: 9%; }
+.golden-sky__cloud--3 { --cloud-size: 100px; --cloud-opacity: .29; --cloud-speed: 66s; --cloud-drift-x: 52px; --cloud-drift-y: -12px; top: 37%; left: 2%; }
+.golden-sky__cloud--4 { --cloud-size: 140px; --cloud-opacity: .27; --cloud-speed: 52s; --cloud-drift-x: -44px; --cloud-drift-y: 9px; top: 44%; right: -1%; }
+.golden-sky__cloud--5 { --cloud-size: 55px; --cloud-opacity: .42; --cloud-speed: 34s; --cloud-drift-x: 28px; --cloud-drift-y: -7px; top: 69%; left: 15%; }
+.golden-sky__cloud--6 { --cloud-size: 105px; --cloud-opacity: .30; --cloud-speed: 63s; --cloud-drift-x: -40px; --cloud-drift-y: 11px; top: 75%; right: 18%; }
+.golden-sky__cloud--7 { --cloud-size: 78px; --cloud-opacity: .35; --cloud-speed: 43s; --cloud-drift-x: 35px; --cloud-drift-y: -9px; top: 88%; left: 4%; }
+.golden-sky__cloud--8 { --cloud-size: 130px; --cloud-opacity: .28; --cloud-speed: 70s; --cloud-drift-x: -48px; --cloud-drift-y: 7px; top: 91%; right: 1%; }
+@keyframes golden-cloud-drift { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(var(--cloud-drift-x), var(--cloud-drift-y), 0); } }
+main, footer { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .golden-sky__cloud { animation: none; } }
+@media (max-width: 650px) { .golden-sky__cloud--2, .golden-sky__cloud--4, .golden-sky__cloud--7 { display: none; } }
 /* Bienvenida breve: partículas livianas en CSS y revelado gradual del logo. */
 .site-intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #fff; opacity: 1; transition: opacity .65s ease, visibility .65s ease; }
 .site-intro.is-exiting { opacity: 0; visibility: hidden; }
@@ -78,7 +97,7 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .flip-card__back .flip-card__hint { color: #d6e6fb; }
 @media (hover: hover) and (pointer: fine) { .flip-card:hover .flip-card__inner { transform: rotateY(180deg); } }
 .flip-card.is-flipped .flip-card__inner { transform: rotateY(180deg); }
-.workshops { background: #fff; }
+.workshops { background: transparent; }
 .workshop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .workshop-card { border: 1px solid var(--line); padding: 30px 27px; min-height: 185px; transition: .3s; background: #fff; }
 .workshop-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px #123c6a12; border-color: #aac4e5; }
@@ -96,7 +115,7 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .activity-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
 .activity-strip figure:hover img { transform: scale(1.07); }
 .activity-strip figcaption { position: absolute; inset: auto 0 0; padding: 30px 15px 13px; background: linear-gradient(transparent, #071e41bb); color: #fff; font-size: 12px; font-weight: 700; }
-.benefits { background: #fff; }
+.benefits { background: transparent; }
 .benefit-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
 .benefit-card { background: #fff; padding: 16px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 150px; text-align: center; transition: .3s; border: 1px solid var(--line); }
 .benefit-card:hover { border-color: #aac4e5; box-shadow: 0 12px 25px #123c6a12; transform: translateY(-4px); }
