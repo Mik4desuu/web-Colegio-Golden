@@ -188,9 +188,10 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
   .site-header, .navbar { height: 66px; }
   .nav-menu { inset: 66px 0 auto; }
   .levels-grid, .workshop-grid { grid-template-columns: 1fr; }
-  .benefit-grid { display: flex; overflow-x: auto; gap: 10px; padding: 2px 0 9px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .benefit-grid { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 12px; padding: 2px 0 9px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .benefit-grid::-webkit-scrollbar { display: none; }
-  .benefit-card { flex: 0 0 126px; min-height: 126px; padding: 12px 7px; scroll-snap-align: start; }
+  .benefit-card { flex: 0 0 auto; width: 164px; min-width: 164px; max-width: 164px; height: 132.4px; min-height: 132.4px; gap: 8px; padding: 12px 14px; scroll-snap-align: start; }
+  .benefit-card h3 { max-width: 136px; }
   .benefit-card img { width: 62px; height: 62px; }
   .levels-grid { max-width: none; }
   .levels-grid .program-card { min-height: 210px; }
