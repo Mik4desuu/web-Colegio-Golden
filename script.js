@@ -35,11 +35,14 @@ document.querySelectorAll('.news-toggle').forEach(toggle => {
   });
 });
 
-// La intro se superpone mientras carga la página y se retira sola sin bloquearla.
+// La intro se desvanece después de completar la entrada del logo y el trazo circular.
 const siteIntro = document.querySelector('.site-intro');
-if (siteIntro && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  window.setTimeout(() => siteIntro.classList.add('is-exiting'), 4150);
-  window.setTimeout(() => siteIntro.remove(), 4850);
+if (siteIntro) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const introExitDelay = reducedMotion ? 700 : 2650;
+  const introRemoveDelay = reducedMotion ? 1250 : 3200;
+  window.setTimeout(() => siteIntro.classList.add('is-exiting'), introExitDelay);
+  window.setTimeout(() => siteIntro.remove(), introRemoveDelay);
 }
 
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30), { passive: true });

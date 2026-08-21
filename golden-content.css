@@ -21,23 +21,19 @@ body { overflow-x: clip; }
 main, footer { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { .golden-sky__cloud { animation: none; } }
 @media (max-width: 650px) { .golden-sky__cloud--2, .golden-sky__cloud--4, .golden-sky__cloud--7 { display: none; } }
-/* Bienvenida breve: partículas livianas en CSS y revelado gradual del logo. */
-.site-intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #fff; opacity: 1; transition: opacity .65s ease, visibility .65s ease; }
+/* Bienvenida breve: logo real y un trazo SVG inspirado en un loader de línea dibujada. */
+.site-intro { --intro-ring-blue: #0B55A5; --intro-ring-light: #BFE3F5; position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #fff; opacity: 1; transition: opacity .55s ease, visibility .55s ease; }
 .site-intro.is-exiting { opacity: 0; visibility: hidden; }
-.site-intro__content { position: relative; display: grid; place-items: center; min-height: 470px; width: min(90vw, 580px); }
-.intro-particles { position: absolute; inset: 0; display: grid; place-items: center; }
-.intro-particles span { position: absolute; width: 12px; height: 12px; border-radius: 3px; background: var(--blue); transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; animation: gather-piece 2.1s cubic-bezier(.2,.8,.2,1) forwards; }
-.intro-particles span:nth-child(2n) { width: 8px; height: 8px; border-radius: 50%; background: #4b82c4; animation-delay: .08s; }
-.intro-particles span:nth-child(3n) { width: 15px; height: 5px; border-radius: 5px; background: #0b5db8; animation-delay: .16s; }
-.intro-logo-reveal { position: relative; z-index: 1; width: 250px; height: 250px; display: grid; place-items: center; opacity: 0; transform: scale(.84); animation: reveal-logo 1.3s cubic-bezier(.2,.8,.2,1) .85s forwards; }
-.intro-logo-reveal::before { content: ""; position: absolute; inset: -15px; border: 1px solid #d9e7f7; border-radius: 50%; opacity: 0; animation: logo-ring 1.1s ease 1.55s forwards; }
-.intro-logo-reveal img { width: 100%; height: 100%; padding: 7px; object-fit: contain; border-radius: 50%; background: #fff; box-shadow: 0 14px 36px #0a4da21c; clip-path: inset(0 50% 0 50% round 50%); animation: unveil-logo 1.1s ease .95s forwards; }
-.site-intro__content p { position: absolute; top: calc(50% + 190px); margin: 0; color: var(--blue); font-size: 23px; font-weight: 700; letter-spacing: .45px; line-height: 1.45; text-align: center; opacity: 0; transform: translateY(9px); animation: intro-words .7s ease 2.35s forwards; }
-@keyframes gather-piece { 0% { opacity: 0; } 15% { opacity: .85; } 80% { opacity: .65; } 100% { opacity: 0; transform: translate(0, 0) rotate(0); } }
-@keyframes reveal-logo { to { opacity: 1; transform: scale(1); } }
-@keyframes unveil-logo { to { clip-path: inset(0 0 0 0 round 50%); } }
-@keyframes logo-ring { 0% { opacity: .75; transform: scale(.65); } 100% { opacity: 0; transform: scale(1.38); } }
-@keyframes intro-words { to { opacity: 1; transform: translateY(0); } }
+.site-intro__content { position: relative; display: grid; place-items: center; width: min(90vw, 360px); }
+.intro-logo-reveal { position: relative; display: grid; width: clamp(120px, 12vw, 155px); aspect-ratio: 1; place-items: center; opacity: 0; transform: scale(.85); filter: blur(7px); animation: intro-logo-appear .62s cubic-bezier(.22,.8,.26,1) .08s forwards, intro-logo-depart .42s ease 2.45s forwards; }
+.intro-logo-reveal img { position: relative; z-index: 1; width: 100%; height: 100%; padding: 5px; object-fit: contain; border-radius: 50%; background: #fff; }
+.intro-loader-ring { position: absolute; inset: -22%; width: 144%; height: 144%; overflow: visible; transform-box: fill-box; transform-origin: center; animation: intro-ring-turn 2.35s ease-in-out .35s forwards; }
+.intro-loader-ring__track { fill: none; stroke: var(--intro-ring-light); stroke-width: 1.2; opacity: .42; }
+.intro-loader-ring__trace { fill: none; stroke: url(#golden-intro-ring); stroke-width: 2.1; stroke-linecap: round; stroke-dasharray: 72 28; stroke-dashoffset: 100; opacity: 0; animation: intro-ring-trace 2.35s cubic-bezier(.36,.01,.25,1) .28s forwards; }
+@keyframes intro-logo-appear { to { opacity: 1; transform: scale(1); filter: blur(0); } }
+@keyframes intro-logo-depart { to { opacity: 0; transform: scale(1.03); filter: blur(1px); } }
+@keyframes intro-ring-turn { 0% { transform: rotate(-8deg) scale(.92); opacity: 0; } 22% { opacity: 1; } 78% { opacity: 1; } 100% { transform: rotate(12deg) scale(1.02); opacity: 0; } }
+@keyframes intro-ring-trace { 0% { stroke-dashoffset: 100; opacity: 0; } 16% { opacity: 1; } 50% { stroke-dashoffset: 0; opacity: 1; } 78% { stroke-dashoffset: -13; opacity: 1; } 100% { stroke-dashoffset: -20; opacity: 0; } }
 h1, h2, .hero h1, .intro h2, .section-heading h2, .contact h2, .testimonials h2 { font-family: var(--sans); font-weight: 800; letter-spacing: -1.3px; }
 h3, .eyebrow, .text-link, .btn { font-family: var(--sans); }
 h3, .eyebrow, .text-link { font-weight: 700; }
@@ -150,12 +146,10 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .map-embed { height: 300px; background: var(--soft); }
 .map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 @media (min-width: 651px) and (max-width: 900px) { .benefit-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (prefers-reduced-motion: reduce) { .site-intro { display: none; } .workshop-card { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .intro-logo-reveal, .intro-loader-ring, .intro-loader-ring__trace { animation: none; } .intro-logo-reveal { opacity: 1; transform: none; filter: none; } .intro-loader-ring { opacity: 0; } .workshop-card { animation: none; } }
 @media (max-width: 650px) {
   body { font-size: 16px; line-height: 1.7; }
-  .site-intro__content { min-height: 420px; }
-  .intro-logo-reveal { width: 200px; height: 200px; }
-  .site-intro__content p { top: calc(50% + 165px); width: min(90vw, 390px); font-size: 19px; }
+  .intro-logo-reveal { width: clamp(96px, 29vw, 120px); }
   .section { padding: 54px 0; }
   .hero { min-height: 0; height: 80svh; max-height: 80svh; }
   .hero h1 { font-size: clamp(40px, 11.6vw, 51px); line-height: 1.1; }
