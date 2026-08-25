@@ -108,6 +108,7 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 .workshop-card > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #eaf2ff; color: var(--blue); font: 22px var(--serif); }
 .workshop-card h3 { font-size: 16px; margin: 18px 0 5px; }
 .workshop-card p { font-size: 12px; line-height: 1.6; color: var(--muted); margin: 0; }
+.workshop-card .workshop-line { display: block; white-space: nowrap; }
 .activity-gallery { background: var(--soft); }
 .activity-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
 .activity-strip figure { margin: 0; position: relative; height: 270px; overflow: hidden; }
