@@ -60,11 +60,13 @@ em { font-style: normal; font-weight: 800; }
 .benefit-card h3, .news-content p, .news-content a, .contact-details a { font-size: 14px; }
 .program-card h3, .workshop-card h3, .news-content h3 { font-size: 18px; }
 .news-content h3 { color: var(--ink); }
+.news-card { display: flex; flex-direction: column; }
+.news-content { display: flex; flex: 1; flex-direction: column; }
 .news-extra { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .45s ease, opacity .3s ease, margin .45s ease; }
 .news-extra p { max-width: 62ch; margin: 0 0 14px; color: #444; font-size: 14px; font-weight: 400; line-height: 1.7; }
 .news-extra p:last-child { margin: 4px 0 0; color: var(--blue); font-weight: 600; }
 .news-card.is-open .news-extra { max-height: 430px; margin: 0 0 17px; opacity: 1; }
-.news-toggle { display: inline-flex; align-items: center; gap: 7px; padding: 0; border: 0; background: transparent; color: var(--blue); font: 800 11px var(--sans); cursor: pointer; }
+.news-toggle { display: inline-flex; align-items: center; gap: 7px; margin-top: auto; padding: 0; border: 0; background: transparent; color: var(--blue); font: 800 11px var(--sans); cursor: pointer; }
 .news-toggle span { font-size: 17px; transition: transform .25s ease; }
 .news-card.is-open .news-toggle span { transform: rotate(90deg); }
 label { font-size: 14px; }
@@ -176,6 +178,8 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
 @media (min-width: 651px) and (max-width: 900px) { .hero-media img { object-position: 50% 50%; } .benefit-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .intro-logo-reveal, .intro-loader-ring, .intro-loader-ring__trace { animation: none; } .intro-logo-reveal { opacity: 1; transform: none; filter: none; } .intro-loader-ring { opacity: 0; } .workshop-card { animation: none; } }
 @media (max-width: 650px) {
+  .news-grid { grid-auto-rows: 1fr; }
+  .news-card { display: grid; height: 100%; grid-template-columns: 40% 60%; }
   .hero-media img { object-position: 35% 50%; }
   body { font-size: 16px; line-height: 1.7; }
   .intro-logo-reveal { width: clamp(96px, 29vw, 120px); }
