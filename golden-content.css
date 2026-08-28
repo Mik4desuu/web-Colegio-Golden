@@ -22,7 +22,8 @@ main, footer { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { .golden-sky__cloud { animation: none; } }
 @media (max-width: 650px) { .golden-sky__cloud--2, .golden-sky__cloud--4, .golden-sky__cloud--7 { display: none; } }
 /* Bienvenida breve: logo real y un trazo SVG inspirado en un loader de línea dibujada. */
-.site-intro { --intro-ring-blue: #0B55A5; --intro-ring-light: #BFE3F5; position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; overflow: hidden; background: #fff; opacity: 1; transition: opacity .4s ease, visibility .4s ease; }
+.site-intro { --intro-ring-blue: #0B55A5; --intro-ring-light: #BFE3F5; position: fixed; inset: 0; z-index: 1000; display: none; place-items: center; overflow: hidden; background: #fff; opacity: 1; transition: opacity .4s ease, visibility .4s ease; }
+.intro-active .site-intro { display: grid; }
 .site-intro.is-exiting { opacity: 0; visibility: hidden; }
 .site-intro__content { position: relative; display: grid; place-items: center; width: min(90vw, 360px); }
 .intro-logo-reveal { position: relative; display: grid; width: clamp(120px, 12vw, 155px); aspect-ratio: 1; place-items: center; opacity: 0; transform: scale(.85); filter: blur(7px); animation: intro-logo-appear .45s cubic-bezier(.22,.8,.26,1) .05s forwards, intro-logo-depart .32s ease 1.2s forwards; }
@@ -219,4 +220,16 @@ input, select, textarea { font-size: 17px; padding: 11px 0; }
   .map-embed { height: 230px; }
   .brand-logo { width: 42px; height: 42px; }
   .testimonial { padding: 24px 22px; }
+}
+
+/* La página sigue siendo legible si el JavaScript no llega a cargar. */
+.reveal { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
+.reveal.reveal-pending { opacity: 0; transform: translateY(20px); }
+.reveal.reveal-pending.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .golden-sky__cloud, .hero-media, .liquid-wave, .liquid-shine, .workshop-card, .whatsapp-float, .golden-contact-title::after { animation: none !important; }
+  .reveal, .testimonial-track, .program-card, .workshop-card, .hero-enroll, .btn, .text-link span, .golden-contact-details a, .golden-contact-submit { transition-duration: .01ms !important; }
 }

@@ -2,11 +2,12 @@
 const header = document.querySelector('.site-header');
 const toggle = document.querySelector('.nav-toggle');
 const menu = document.querySelector('.nav-menu');
+const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const heroEnroll = document.querySelector('.hero-enroll');
 heroEnroll?.addEventListener('click', event => {
   event.preventDefault();
-  document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelector('#contacto')?.scrollIntoView({ behavior: motionReduced ? 'auto' : 'smooth', block: 'start' });
 });
 
 // En pantallas táctiles, las Flip Cards alternan de cara con cada toque.
@@ -38,11 +39,10 @@ document.querySelectorAll('.news-toggle').forEach(toggle => {
 // La intro se desvanece después de completar la entrada del logo y el trazo circular.
 const siteIntro = document.querySelector('.site-intro');
 if (siteIntro) {
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const introExitDelay = reducedMotion ? 500 : 1300;
-  const introRemoveDelay = reducedMotion ? 900 : 1750;
+  const introExitDelay = motionReduced ? 500 : 1100;
+  const introRemoveDelay = motionReduced ? 900 : 1550;
   window.setTimeout(() => siteIntro.classList.add('is-exiting'), introExitDelay);
-  window.setTimeout(() => siteIntro.remove(), introRemoveDelay);
+  window.setTimeout(() => { siteIntro.remove(); document.documentElement.classList.remove('intro-active'); }, introRemoveDelay);
 }
 
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
@@ -55,15 +55,21 @@ document.querySelectorAll('.nav-menu a').forEach(link => link.addEventListener('
   menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
 }));
 
-const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-  if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
-}), { threshold: 0.13 });
-document.querySelectorAll('.reveal').forEach(item => revealObserver.observe(item));
+const revealItems = document.querySelectorAll('.reveal');
+revealItems.forEach(item => item.classList.add('reveal-pending'));
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+  }), { threshold: 0.13 });
+  revealItems.forEach(item => revealObserver.observe(item));
+} else {
+  revealItems.forEach(item => item.classList.add('visible'));
+}
 
 const track = document.querySelector('.testimonial-track');
 const dots = [...document.querySelectorAll('.carousel-dots button')]; let current = 0; let timer;
 function showSlide(index) { current = (index + dots.length) % dots.length; track.style.transform = `translateX(-${current * 100}%)`; dots.forEach((dot, i) => dot.classList.toggle('active', i === current)); }
-function resetTimer() { clearInterval(timer); timer = setInterval(() => showSlide(current + 1), 5500); }
+function resetTimer() { clearInterval(timer); if (!motionReduced) timer = setInterval(() => showSlide(current + 1), 5500); }
 document.querySelector('.next').addEventListener('click', () => { showSlide(current + 1); resetTimer(); });
 document.querySelector('.prev').addEventListener('click', () => { showSlide(current - 1); resetTimer(); });
 dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); resetTimer(); })); resetTimer();
