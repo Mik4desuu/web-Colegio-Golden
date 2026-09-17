@@ -36,6 +36,34 @@ document.querySelectorAll('.news-toggle').forEach(toggle => {
   });
 });
 
+// Priorizamos tres experiencias y dejamos el resto disponible desde el enlace de novedades.
+const newsGrid = document.querySelector('.news-grid');
+const showAllNews = document.querySelector('#news-show-all');
+if (newsGrid && showAllNews) {
+  const featuredNewsTitles = [
+    'Una llamada hasta la Antártida',
+    'Encuentro entre cocinas',
+    'Taller de psicomotricidad en familia'
+  ];
+  const newsCards = [...newsGrid.querySelectorAll('.news-card')];
+  const featuredNewsCards = featuredNewsTitles.map(title =>
+    newsCards.find(card => card.querySelector('h3')?.textContent.trim() === title)
+  ).filter(Boolean);
+  const additionalNewsCards = newsCards.filter(card => !featuredNewsCards.includes(card));
+
+  featuredNewsCards.forEach(card => newsGrid.append(card));
+  additionalNewsCards.forEach(card => {
+    newsGrid.append(card);
+    card.hidden = true;
+  });
+
+  showAllNews.addEventListener('click', event => {
+    event.preventDefault();
+    additionalNewsCards.forEach(card => { card.hidden = false; });
+    showAllNews.setAttribute('aria-expanded', 'true');
+  }, { once: true });
+}
+
 // La intro se desvanece después de completar la entrada del logo y el trazo circular.
 const siteIntro = document.querySelector('.site-intro');
 if (siteIntro) {
