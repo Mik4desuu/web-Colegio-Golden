@@ -63,6 +63,7 @@ em { font-style: normal; font-weight: 800; }
 .news-grid { align-items: start; }
 .news-card { display: flex; flex-direction: column; }
 .news-card[hidden] { display: none !important; }
+#news-show-all { padding: 0; border: 0; background: transparent; cursor: pointer; }
 .news-content { display: flex; flex: 1; flex-direction: column; }
 .news-extra { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .45s ease, opacity .3s ease, margin .45s ease; }
 .news-extra p { max-width: 62ch; margin: 0 0 14px; color: #444; font-size: 14px; font-weight: 400; line-height: 1.7; }
